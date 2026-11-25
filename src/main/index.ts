@@ -28,7 +28,7 @@ function createWindow(): void {
     height: 940,
     minWidth: 1100,
     minHeight: 680,
-    title: 'Slate',
+    title: 'SadSha Slate',
     icon: join(__dirname, '../../build/icon.png'),
     titleBarStyle: 'hiddenInset',
     trafficLightPosition: { x: 18, y: 16 },
@@ -52,10 +52,10 @@ function createWindow(): void {
   })
 }
 
-app.setName('Slate')
+app.setName('SadSha Slate')
 
 app.setAboutPanelOptions({
-  applicationName: 'Slate',
+  applicationName: 'SadSha Slate',
   applicationVersion: app.getVersion(),
   copyright: 'Apache-2.0 · Sam Wasserman',
   credits: 'The prompt studio for AI filmmaking.\nPlan · Direct · Compile',
@@ -69,27 +69,25 @@ function buildMenu(): void {
   }
   const template: Electron.MenuItemConstructorOptions[] = [
     {
-      label: 'Slate',
+      label: 'SadSha Slate',
       submenu: [
         {
-          label: 'About Slate',
+          label: 'About SadSha Slate',
           click: () => {
             win?.webContents.send('about:open')
             win?.show()
           }
         },
         { type: 'separator' },
-        { label: 'Slate Help', accelerator: 'CmdOrCtrl+/', click: openHelp },
+        { label: 'SadSha Slate Help', accelerator: 'CmdOrCtrl+/', click: openHelp },
         { type: 'separator' },
-        { label: 'Support Slate on Ko-fi ♥', click: () => void shell.openExternal('https://ko-fi.com/samwasserman') },
-        { label: 'wassermanproductions.com', click: () => void shell.openExternal('https://wassermanproductions.com') },
-        { label: 'wasserman.ai', click: () => void shell.openExternal('https://wasserman.ai') },
+        { label: 'SadSha Slate on GitHub', click: () => void shell.openExternal('https://github.com/fnjlabs-arch/slate') },
         { type: 'separator' },
-        { role: 'hide', label: 'Hide Slate' },
+        { role: 'hide', label: 'Hide SadSha Slate' },
         { role: 'hideOthers' },
         { role: 'unhide' },
         { type: 'separator' },
-        { role: 'quit', label: 'Quit Slate' }
+        { role: 'quit', label: 'Quit SadSha Slate' }
       ]
     },
     { role: 'fileMenu' },
@@ -99,23 +97,21 @@ function buildMenu(): void {
     {
       role: 'help',
       submenu: [
-        { label: 'Slate Help', accelerator: 'CmdOrCtrl+?', click: openHelp },
+        { label: 'SadSha Slate Help', accelerator: 'CmdOrCtrl+?', click: openHelp },
         { type: 'separator' },
-        { label: 'Support Slate on Ko-fi ♥', click: () => void shell.openExternal('https://ko-fi.com/samwasserman') },
-        { label: 'wassermanproductions.com', click: () => void shell.openExternal('https://wassermanproductions.com') },
-        { label: 'wasserman.ai', click: () => void shell.openExternal('https://wasserman.ai') }
+        { label: 'SadSha Slate on GitHub', click: () => void shell.openExternal('https://github.com/fnjlabs-arch/slate') }
       ]
     }
   ]
   Menu.setApplicationMenu(Menu.buildFromTemplate(template))
 }
 
-// Headless capture mode (SLATE_SNAP_SCRIPT + SLATE_SNAP_OUT): drive the UI
+// Headless capture mode (SADSHA_SLATE_SNAP_SCRIPT + SADSHA_SLATE_SNAP_OUT): drive the UI
 // from a step script and save PNGs from a hidden window. Used by scripts/snap.
 async function runSnap(): Promise<void> {
   const { readFileSync, writeFileSync, mkdirSync } = await import('fs')
-  const scriptPath = process.env.SLATE_SNAP_SCRIPT!
-  const outDir = process.env.SLATE_SNAP_OUT || '.'
+  const scriptPath = process.env.SADSHA_SLATE_SNAP_SCRIPT!
+  const outDir = process.env.SADSHA_SLATE_SNAP_OUT || '.'
   mkdirSync(outDir, { recursive: true })
   const steps = JSON.parse(readFileSync(scriptPath, 'utf8')) as Array<{
     js?: string
@@ -196,7 +192,7 @@ async function runSnap(): Promise<void> {
 }
 
 app.whenReady().then(async () => {
-  if (process.env.SLATE_SNAP_SCRIPT) {
+  if (process.env.SADSHA_SLATE_SNAP_SCRIPT) {
     await runSnap()
     return
   }

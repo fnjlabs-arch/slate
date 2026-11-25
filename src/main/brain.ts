@@ -69,7 +69,7 @@ async function probeLocal(endpoint: string): Promise<LocalModelInfo[] | null> {
     const ctrl = new AbortController()
     const t = setTimeout(() => ctrl.abort(), 1500)
     const res = await fetch(`${endpoint}/models`, {
-      headers: { Authorization: 'Bearer slate' },
+      headers: { Authorization: 'Bearer sadsha-slate' },
       signal: ctrl.signal
     })
     clearTimeout(t)
@@ -139,7 +139,7 @@ async function runLocalOnce(
   try {
     const res = await fetch(`${endpoint}/chat/completions`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer slate' },
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer sadsha-slate' },
       body: JSON.stringify({ model, messages, stream: false }),
       signal: ctrl.signal
     })
@@ -341,10 +341,10 @@ function parseClaudeOutput(raw: string): string {
 export async function brainRun(req: BrainRequest, backend: BrainBackend): Promise<BrainResult> {
   const started = Date.now()
 
-  // Demo mode (SLATE_BRAIN_MOCK=<dir>): serve canned responses keyed by task
+  // Demo mode (SADSHA_SLATE_BRAIN_MOCK=<dir>): serve canned responses keyed by task
   // prefix after a short realistic delay. Used by the capture rig only.
-  if (process.env.SLATE_BRAIN_MOCK) {
-    const dir = process.env.SLATE_BRAIN_MOCK
+  if (process.env.SADSHA_SLATE_BRAIN_MOCK) {
+    const dir = process.env.SADSHA_SLATE_BRAIN_MOCK
     const key = ['first-ad', 'reference-analysis', 'score-compile', 'voice-compile', 'compile', 'directors-note']
       .find((k) => req.task.startsWith(k))
     const file = join(dir, `${key ?? 'default'}.json`)
@@ -362,7 +362,7 @@ export async function brainRun(req: BrainRequest, backend: BrainBackend): Promis
   }
   if (backend === 'local') return runLocal(req, started)
 
-  const lastMessageFile = join(tmpdir(), `slate-codex-${req.id}.txt`)
+  const lastMessageFile = join(tmpdir(), `sadsha-slate-codex-${req.id}.txt`)
   const call = backend === 'claude' ? buildClaudeCall(req) : buildCodexCall(req, lastMessageFile)
 
   const codexResult = (rawStdout: string): string => {

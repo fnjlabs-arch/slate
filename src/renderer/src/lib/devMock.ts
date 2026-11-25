@@ -1,14 +1,14 @@
 // Browser-preview mock — lets the renderer run in a plain browser (no Electron)
 // for UI development. Projects live in memory; brain calls return a stub notice.
 
-import type { Project, SlateApi } from '../../../shared/types'
+import type { Project, SadShaSlateApi } from '../../../shared/types'
 import { newProjectShape } from './newProject'
 
 export function installDevMock(): void {
-  if (typeof window === 'undefined' || (window as unknown as { slate?: SlateApi }).slate) return
+  if (typeof window === 'undefined' || (window as unknown as { sadshaSlate?: SadShaSlateApi }).sadshaSlate) return
   const projects = new Map<string, Project>()
 
-  const api: SlateApi = {
+  const api: SadShaSlateApi = {
     async listProjects() {
       return [...projects.values()].map((p) => ({
         id: p.id,
@@ -99,5 +99,5 @@ export function installDevMock(): void {
       return () => {}
     }
   }
-  ;(window as unknown as { slate: SlateApi }).slate = api
+  ;(window as unknown as { sadshaSlate: SadShaSlateApi }).sadshaSlate = api
 }

@@ -115,7 +115,7 @@ const EDITOR_FORMAT = `PROMPT FORMAT — the app's editor uses sectioned prompts
 # Mood
 <the emotional register, rendered as visual language>`
 
-const CINEMA_SYSTEM = `You are the prompt-craft brain inside Slate, a professional prompt studio for filmmakers who generate images and video with AI models. You are an expert cinematographer, director, and prompt engineer. You write vivid, concrete, production-ready visual language — never vague adjectives, never filler like "high quality, 8k, masterpiece". Physical, photographable descriptions only. Respect every continuity fact you are given about characters, wardrobe, props, locations, lighting state, and time of day; if the user's request conflicts with continuity, follow the request and flag the conflict in one short line at the end prefixed with "CONTINUITY:".
+const CINEMA_SYSTEM = `You are the prompt-craft brain inside SadSha Slate, a professional prompt studio for filmmakers who generate images and video with AI models. You are an expert cinematographer, director, and prompt engineer. You write vivid, concrete, production-ready visual language — never vague adjectives, never filler like "high quality, 8k, masterpiece". Physical, photographable descriptions only. Respect every continuity fact you are given about characters, wardrobe, props, locations, lighting state, and time of day; if the user's request conflicts with continuity, follow the request and flag the conflict in one short line at the end prefixed with "CONTINUITY:".
 
 ${EDITOR_FORMAT}`
 
@@ -143,7 +143,7 @@ export async function runBrain(p: Project, opts: RunOpts): Promise<BrainResult> 
     localEndpoint: p.defaults.localEndpoint,
     localModel: p.defaults.localModel
   }
-  return (await window.slate.brainRun(req)) as BrainResult
+  return (await window.sadshaSlate.brainRun(req)) as BrainResult
 }
 
 // ---------- Editor transforms ----------
@@ -234,7 +234,7 @@ export async function directorsNote(
 ): Promise<BrainResult> {
   const convo = history
     .slice(-10)
-    .map((m) => `${m.role === 'user' ? 'DIRECTOR' : 'SLATE'}: ${m.text}`)
+    .map((m) => `${m.role === 'user' ? 'DIRECTOR' : 'SADSHA SLATE'}: ${m.text}`)
     .join('\n\n')
   return runBrain(p, {
     task: 'directors-note',

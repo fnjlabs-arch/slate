@@ -184,7 +184,7 @@ function LocalBrainFields(): React.JSX.Element {
 
   useEffect(() => {
     let live = true
-    void window.slate.localModels(p.defaults.localEndpoint || undefined).then((res) => {
+    void window.sadshaSlate.localModels(p.defaults.localEndpoint || undefined).then((res) => {
       if (!live) return
       setDetected(res.endpoint)
       setModels(res.models.map((m) => m.id))

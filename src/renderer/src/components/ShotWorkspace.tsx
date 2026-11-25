@@ -320,7 +320,7 @@ export default function ShotWorkspace({ railOpen, onToggleRail }: Props): React.
                     >
                       Use This
                     </button>
-                    <button className="btn btn-sm" onClick={() => void window.slate.copyText(v.prompt)}>
+                    <button className="btn btn-sm" onClick={() => void window.sadshaSlate.copyText(v.prompt)}>
                       Copy
                     </button>
                   </div>

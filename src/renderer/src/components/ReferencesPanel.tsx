@@ -15,12 +15,12 @@ export default function ReferencesPanel(): React.JSX.Element {
   const [error, setError] = useState<string | null>(null)
 
   const addRefs = async (): Promise<void> => {
-    const paths = await window.slate.pickMedia()
+    const paths = await window.sadshaSlate.pickMedia()
     for (const path of paths) {
       setBusy(path)
       setError(null)
       try {
-        const { kind, frames } = await window.slate.ingestMedia(project.id, path)
+        const { kind, frames } = await window.sadshaSlate.ingestMedia(project.id, path)
         store.addReference({
           id: uid('ref'),
           path,
@@ -71,7 +71,7 @@ export default function ReferencesPanel(): React.JSX.Element {
           + Add images or clips
         </button>
         <div style={{ fontSize: 11.5, color: 'var(--ink-3)', marginTop: 6 }}>
-          Clips are broken into key frames locally (ffmpeg). Media stays where it lives — Slate links
+          Clips are broken into key frames locally (ffmpeg). Media stays where it lives — SadSha Slate links
           it, never copies it.
         </div>
         {error && <div style={{ color: 'var(--danger)', fontSize: 12, marginTop: 6 }}>{error}</div>}
@@ -161,7 +161,7 @@ function StillsLibrary(): React.JSX.Element {
     setBusy('scan')
     setError(null)
     try {
-      const takes: CircledTake[] = await window.slate.stillsDiscover()
+      const takes: CircledTake[] = await window.sadshaSlate.stillsDiscover()
       const rows = takes.map((t) => ({
         key: `${t.mediaPath}:${t.inSec ?? ''}`,
         label: t.shot ? `${t.shot} — ${t.fileName}` : t.fileName,
@@ -182,7 +182,7 @@ function StillsLibrary(): React.JSX.Element {
   }
 
   const addClips = async (): Promise<void> => {
-    const paths = await window.slate.pickMedia()
+    const paths = await window.sadshaSlate.pickMedia()
     setSources((prev) => {
       const have = new Set(prev.map((s) => s.key))
       const rows = paths
@@ -204,7 +204,7 @@ function StillsLibrary(): React.JSX.Element {
     setBusy(s.key)
     setError(null)
     try {
-      const out = await window.slate.stillsExtract(project.id, s.mediaPath, s.inSec, s.outSec)
+      const out = await window.sadshaSlate.stillsExtract(project.id, s.mediaPath, s.inSec, s.outSec)
       setFrames((f) => ({ ...f, [s.key]: out }))
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e))

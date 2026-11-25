@@ -1,4 +1,4 @@
-// Project persistence — one folder per project under ~/Documents/Slate.
+// Project persistence — one folder per project under ~/Documents/SadSha Slate.
 // Projects are small JSON (prompts + sheets); reference media is linked, never copied.
 
 import { app } from 'electron'
@@ -9,8 +9,8 @@ import { randomUUID } from 'crypto'
 import type { Project, ProjectMeta } from '../shared/types'
 
 export function projectsRoot(): string {
-  // SLATE_DATA_DIR overrides the default location (portable installs, tests).
-  return process.env.SLATE_DATA_DIR || join(app.getPath('documents'), 'Slate')
+  // SADSHA_SLATE_DATA_DIR overrides the default location (portable installs, tests).
+  return process.env.SADSHA_SLATE_DATA_DIR || join(app.getPath('documents'), 'SadSha Slate')
 }
 
 function projectDir(id: string): string {

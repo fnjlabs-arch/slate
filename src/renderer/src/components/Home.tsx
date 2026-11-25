@@ -23,14 +23,14 @@ export default function Home(): React.JSX.Element {
     <div className="home">
       <div className="home-inner">
         <div className="home-hero">
-          <img className="home-brand" src={brandArt} alt="Slate — prompt studio for AI filmmaking" />
+          <img className="home-brand" src={brandArt} alt="SadSha Slate — prompt studio for AI filmmaking" />
           <p>
             Plan shots, direct coverage, spot your score, cast your voices, keep continuity — and
             compile production-ready prompts for any generator.
           </p>
           {brain && !brain.claude.available && !brain.codex.available && (
             <div className="brain-warning">
-              No local brain found. Install and sign in to Claude Code (or Codex CLI) — Slate uses
+              No local brain found. Install and sign in to Claude Code (or Codex CLI) — SadSha Slate uses
               your existing subscription, no API keys.
             </div>
           )}
@@ -102,7 +102,7 @@ export default function Home(): React.JSX.Element {
 
         <div className="home-foot">
           <button className="btn btn-ghost btn-sm" onClick={() => setShowAbout(true)}>
-            About Slate
+            About SadSha Slate
           </button>
         </div>
       </div>

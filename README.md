@@ -1,25 +1,24 @@
 <div align="center">
 
-<img src="docs/images/logo.png" alt="Slate logo" width="360" />
+<img src="docs/images/logo.png" alt="SadSha Slate logo" width="360" />
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg" alt="License: Apache 2.0"></a>
-  <a href="../../releases"><img src="https://img.shields.io/github/v/release/wassermanproductions/slate?include_prereleases&label=download" alt="Latest release"></a>
+  <a href="../../releases"><img src="https://img.shields.io/github/v/release/fnjlabs-arch/slate?include_prereleases&label=download" alt="Latest release"></a>
   <img src="https://img.shields.io/badge/platform-macOS-2f7bf6" alt="Platforms">
-  <a href="https://ko-fi.com/samwasserman"><img src="https://img.shields.io/badge/Ko--fi-support%20Sam%20Wasserman-ff5e5b?logo=kofi&logoColor=white" alt="Support Sam Wasserman on Ko-fi"></a>
 </p>
 
 **The prompt studio for AI filmmaking.** Plan shots, direct coverage, spot your score, cast your voices, keep continuity across an entire film — and compile production-ready prompts for the exact generator you're using.
 
-![Slate — the prompt editor with cinematic syntax highlighting](docs/images/1-editor.png)
+![SadSha Slate — the prompt editor with cinematic syntax highlighting](docs/images/1-editor.png)
 
 </div>
 
 ---
 
-Slate doesn't generate images or video. It makes the **prompts** you paste into your generators dramatically better, faster, and consistent across a whole film — the missing pre-production layer between *"I can see the shot"* and the generate button.
+SadSha Slate doesn't generate images or video. It makes the **prompts** you paste into your generators dramatically better, faster, and consistent across a whole film — the missing pre-production layer between *"I can see the shot"* and the generate button.
 
-You write (or direct) structured, sectioned shot prompts — **Subject · Composition · Lighting · Camera · Style · Mood**, the categories a crew thinks in — with live cinematic syntax highlighting. A local AI brain helps you structure, tighten, enrich, riff, and iterate, always in the context of your film's characters, locations, props, and look. Then Slate compiles each shot, music cue, or voice for a specific target: **Seedance 2.0, Kling, Veo, Sora, Hailuo, LTX, Flux, Midjourney, GPT Image, Krea, ComfyUI, Suno, Eleven Music, Lyria, Stable Audio, ElevenLabs Voice Design, Hume, MiniMax** — each in its own dialect, against its real limits.
+You write (or direct) structured, sectioned shot prompts — **Subject · Composition · Lighting · Camera · Style · Mood**, the categories a crew thinks in — with live cinematic syntax highlighting. A local AI brain helps you structure, tighten, enrich, riff, and iterate, always in the context of your film's characters, locations, props, and look. Then SadSha Slate compiles each shot, music cue, or voice for a specific target: **Seedance 2.0, Kling, Veo, Sora, Hailuo, LTX, Flux, Midjourney, GPT Image, Krea, ComfyUI, Suno, Eleven Music, Lyria, Stable Audio, ElevenLabs Voice Design, Hume, MiniMax** — each in its own dialect, against its real limits.
 
 - 🎬 **Projects → scenes → shots.** Your film's bible (logline, world, cast, locations, props, style) travels with every prompt. The brain already knows your protagonist's scar and your city's neon.
 - 🎛️ **Shot specs as real controls** — length (any seconds), fps, aspect ratio, shot size, angle, lens, movement, optional character budget. Structured fields, compiled correctly per model.
@@ -29,11 +28,11 @@ You write (or direct) structured, sectioned shot prompts — **Subject · Compos
 - 🗣️ **Director's Notes** — talk to the shot: *"make it rain, keep the neon."* The prompt updates; the old version goes to history.
 - ✦ **First AD (optional)** — a conversational operator. Describe what you're after, hone it together, and it runs the set: scenes, shots, specs, prompts, cast, locations, music cues, voices — with a receipt for every action. Or never open it and drive everything by hand.
 - 🧑‍🤝‍🧑 **Casting, Art Department, Locations, Lookbook** — structured sheets with natural-language auto-fill; one-click reference-sheet prompts pull consistent identity sheets from your image generator. Study any cinematographer, director, film, or series into a reusable style profile.
-- 🎼 **A Sound Department** — design music cues like a composer spotting a scene (the brain writes tagged lyrics on request) and cast voices with audition text. Drop in **any audio file** and Slate measures it locally — tempo, pitch register, dynamics, brightness, energy arc — then reverse-engineers a matching cue or voice sheet.
+- 🎼 **A Sound Department** — design music cues like a composer spotting a scene (the brain writes tagged lyrics on request) and cast voices with audition text. Drop in **any audio file** and SadSha Slate measures it locally — tempo, pitch register, dynamics, brightness, energy arc — then reverse-engineers a matching cue or voice sheet.
 - 🖼️ **References** — drop in stills or clips; clips are key-framed locally (ffmpeg) and broken down into element sheets — lensing, lighting, palette, movement — you reuse as one-click ingredients.
 - 📦 **Deliverables** — per-model compile with preflight warnings (duration caps, aspect ratios, fps), smart character-budget compression that keeps locked lines verbatim, negative prompts where supported, timecode beats where honored. Copy one prompt, or export a scene as a Markdown shot list / CSV.
 - 🗒️ **Takes Log & version history** — circle the take that worked; roll any prompt back.
-- 🔌 **MCP built in** — agents and other tools can read and write your projects while Slate runs.
+- 🔌 **MCP built in** — agents and other tools can read and write your projects while SadSha Slate runs.
 - 🎞 **A Stills Library** — scan your dailies for circled takes (Circle Take) or any clip, extract stills with ffmpeg, and pin them to a character, location, or look. ✦ Fill then describes the person or place you actually shot, so sheets stay true to the footage.
 - 🔑 **No API keys, ever** — the brain is your own [Claude Code](https://claude.com/claude-code) or Codex sign-in, or any **local model** via Ollama, LM Studio, vLLM, llama.cpp… fully offline.
 
@@ -49,30 +48,30 @@ You write (or direct) structured, sectioned shot prompts — **Subject · Compos
 **macOS — one line:**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/wassermanproductions/slate/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/fnjlabs-arch/slate/main/install.sh | bash
 ```
 
-Or grab `Slate-macOS.zip` from [Releases](../../releases), unzip, and drop `Slate.app` into Applications. (If macOS says the app "is damaged", that's Gatekeeper on unsigned browser downloads — the install script avoids it, or run `xattr -cr /Applications/Slate.app`.)
+Or grab `SadSha-Slate-macOS.zip` from [Releases](../../releases), unzip, and drop `SadSha Slate.app` into Applications. (If macOS says the app "is damaged", that's Gatekeeper on unsigned browser downloads — the install script avoids it, or run `xattr -cr /Applications/SadSha Slate.app`.)
 
 **From source** — requires **Node 20+**, and **ffmpeg** on your PATH for clip/audio reference analysis (`brew install ffmpeg`):
 
 ```bash
-git clone https://github.com/wassermanproductions/slate.git
+git clone https://github.com/fnjlabs-arch/slate.git
 cd slate
 npm ci
 npm run build
-node scripts/package-macos.mjs --install   # builds and installs /Applications/Slate.app
+node scripts/package-macos.mjs --install   # builds and installs /Applications/SadSha Slate.app
 ```
 
 Or run it straight from source with `npm run dev`.
 
 ### The brain — your subscription or a local model, no API keys
 
-Slate contains no API keys and makes no cloud calls of its own. Pick any of three brains:
+SadSha Slate contains no API keys and makes no cloud calls of its own. Pick any of three brains:
 
 - **Claude Code** (recommended) — install, then `claude auth login`
-- **Codex** — if the ChatGPT desktop app is installed and signed in, Slate uses its bundled codex automatically; otherwise install the codex CLI and `codex login`
-- **Local model (offline)** — any OpenAI-compatible local server: **Ollama, LM Studio, vLLM, llama.cpp, KoboldCpp, Jan**, and friends. Slate auto-detects the common ports (`11434`, `1234`, `8000`, `8080`), lists whatever models you have loaded, and never sends a byte off your machine. A custom endpoint field covers anything else. For the reference image/video breakdown features, load a vision-capable model (e.g. `llama3.2-vision`, `qwen2.5-vl`).
+- **Codex** — if the ChatGPT desktop app is installed and signed in, SadSha Slate uses its bundled codex automatically; otherwise install the codex CLI and `codex login`
+- **Local model (offline)** — any OpenAI-compatible local server: **Ollama, LM Studio, vLLM, llama.cpp, KoboldCpp, Jan**, and friends. SadSha Slate auto-detects the common ports (`11434`, `1234`, `8000`, `8080`), lists whatever models you have loaded, and never sends a byte off your machine. A custom endpoint field covers anything else. For the reference image/video breakdown features, load a vision-capable model (e.g. `llama3.2-vision`, `qwen2.5-vl`).
 
 Pick the brain per project in the Project Bible. Click the **brain pill** in the titlebar any time to run a live connectivity test — if something's wrong it tells you the exact fix. If no brain is present, everything except the agent features still works.
 
@@ -85,19 +84,19 @@ Pick the brain per project in the Project Bible. Click the **brain pill** in the
 5. **Keep it honest** — run a **Continuity Check** across the scene; a script-supervisor pass flags wardrobe, lighting, weather, and geography mismatches with concrete fixes.
 6. **Deliver** — pick the target model, heed the preflight warnings, compile, copy, generate. **Circle the takes** that worked so the project remembers reality.
 
-Projects are plain JSON in `~/Documents/Slate/` — yours to back up, sync, or version however you like.
+Projects are plain JSON in `~/Documents/SadSha Slate/` — yours to back up, sync, or version however you like.
 
 ## Working with agents (MCP)
 
-Slate ships a [Model Context Protocol](https://modelcontextprotocol.io) server so agents and suite apps can read and write your projects while Slate runs:
+SadSha Slate ships a [Model Context Protocol](https://modelcontextprotocol.io) server so agents and suite apps can read and write your projects while SadSha Slate runs:
 
 ```bash
-claude mcp add slate -- node /absolute/path/to/slate/mcp/slate-mcp.mjs
+claude mcp add sadsha-slate -- node /absolute/path/to/slate/mcp/sadsha-slate-mcp.mjs
 ```
 
 Tools: `list_projects`, `get_project`, `create_project`, `list_shots`, `get_shot_prompt`, `set_shot_prompt` (with automatic versioning), `add_scene`, `list_characters`, `list_locations`, `list_lookbook`. The control channel is localhost-only with a per-session bearer token; the bridge is a single zero-dependency file.
 
-It pairs naturally with the rest of [Wasserman's Filmmaker Suite](https://github.com/wassermanproductions/wassermans-filmmaker-suite) — break down the script in ScriptBreak, block the scene in Blockout, and craft every generator prompt in Slate.
+It pairs naturally with the rest of [Filmmaker Suite](https://github.com/wassermanproductions/wassermans-filmmaker-suite) — break down the script in ScriptBreak, block the scene in Blockout, and craft every generator prompt in SadSha Slate.
 
 ## Development
 
@@ -107,19 +106,14 @@ It pairs naturally with the rest of [Wasserman's Filmmaker Suite](https://github
 | `npm run build` | Production build (electron-vite) |
 | `npm test` | Unit tests (export engine, action engine, audio DSP) |
 | `npm run typecheck` | Strict TypeScript across main, preload, renderer |
-| `node scripts/package-macos.mjs --install` | Build and install `/Applications/Slate.app` |
+| `node scripts/package-macos.mjs --install` | Build and install `/Applications/SadSha Slate.app` |
 | `node scripts/snap.mjs` | Regenerate README screenshots headlessly |
 
 Stack: Electron + TypeScript + React, CodeMirror 6 editor, zustand state, vitest. The audio reference analysis is local DSP (tempo, pitch, dynamics, structure) — measured on your machine, nothing uploaded.
 
 ## Support
 
-A few people asked if they could send tips to support my work developing open source tools. So I set up an optional way in case anyone wants to.
-
-No pressure at all. Using the apps, sharing them, starring the repositories, and contributing code all help too. Thank you.https://github.com/wassermanproductions/slate
-
-- [GitHub Sponsors](https://github.com/sponsors/wassermanproductions)
-- [Ko-fi](https://ko-fi.com/samwasserman)
+SadSha Slate is a SadSha rebrand of Slate by Sam Wasserman (see License & credits below). Questions and bug reports: please open an issue at https://github.com/fnjlabs-arch/slate.
 
 ## License & credits
 

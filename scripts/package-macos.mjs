@@ -1,4 +1,4 @@
-// Package Slate.app for macOS — no electron-builder, no downloads.
+// Package SadSha Slate.app for macOS — no electron-builder, no downloads.
 // Copies the local Electron runtime, rebrands the bundle (name, id, icon),
 // drops the built app into Resources/app, and ad-hoc signs the result.
 // Usage: node scripts/package-macos.mjs [--install]
@@ -14,7 +14,7 @@ const run = (cmd, args) => execFileSync(cmd, args, { stdio: ['ignore', 'ignore',
 const electronApp = resolve(root, 'node_modules/electron/dist/Electron.app')
 const dist = resolve(root, 'dist')
 const pkgVersion = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf8')).version
-const appPath = resolve(dist, 'Slate.app')
+const appPath = resolve(dist, 'SadSha Slate.app')
 
 if (!existsSync(resolve(root, 'out/main/index.js'))) {
   console.error('No build found — run `npm run build` first.')
@@ -30,7 +30,7 @@ mkdirSync(dist, { recursive: true })
   const png = readFileSync(resolve(root, 'build/icon.png'))
   const entry = Buffer.concat([Buffer.from('ic10'), u32(png.length + 8), png])
   const icns = Buffer.concat([Buffer.from('icns'), u32(entry.length + 8), entry])
-  writeFileSync(resolve(dist, 'slate.icns'), icns)
+  writeFileSync(resolve(dist, 'sadsha-slate.icns'), icns)
 }
 function u32(n) {
   const b = Buffer.alloc(4)
@@ -51,29 +51,29 @@ cpSync(resolve(root, 'build/icon.png'), resolve(payload, 'build/icon.png'), { re
 cpSync(resolve(root, 'mcp'), resolve(payload, 'mcp'), { recursive: true })
 writeFileSync(
   resolve(payload, 'package.json'),
-  JSON.stringify({ name: 'slate', productName: 'Slate', version: pkgVersion, main: 'out/main/index.js' }, null, 2)
+  JSON.stringify({ name: 'sadsha-slate', productName: 'SadSha Slate', version: pkgVersion, main: 'out/main/index.js' }, null, 2)
 )
 
 console.log('→ rebranding bundle')
-cpSync(resolve(dist, 'slate.icns'), resolve(res, 'slate.icns'))
+cpSync(resolve(dist, 'sadsha-slate.icns'), resolve(res, 'sadsha-slate.icns'))
 rmSync(resolve(res, 'electron.icns'), { force: true })
 const plist = resolve(appPath, 'Contents/Info.plist')
 const pb = (args) => run('/usr/libexec/PlistBuddy', [...args, plist])
-pb(['-c', 'Set :CFBundleName Slate'])
-pb(['-c', 'Set :CFBundleDisplayName Slate'])
-pb(['-c', 'Set :CFBundleIdentifier com.wassermanproductions.slate'])
-pb(['-c', 'Set :CFBundleIconFile slate.icns'])
-pb(['-c', 'Set :CFBundleExecutable Slate'])
+pb(['-c', 'Set :CFBundleName SadSha Slate'])
+pb(['-c', 'Set :CFBundleDisplayName SadSha Slate'])
+pb(['-c', 'Set :CFBundleIdentifier com.sadsha.slate'])
+pb(['-c', 'Set :CFBundleIconFile sadsha-slate.icns'])
+pb(['-c', 'Set :CFBundleExecutable SadSha Slate'])
 pb(['-c', `Set :CFBundleShortVersionString ${pkgVersion}`])
-renameSync(resolve(appPath, 'Contents/MacOS/Electron'), resolve(appPath, 'Contents/MacOS/Slate'))
+renameSync(resolve(appPath, 'Contents/MacOS/Electron'), resolve(appPath, 'Contents/MacOS/SadSha Slate'))
 
 console.log('→ ad-hoc signing')
 run('codesign', ['--force', '--deep', '--sign', '-', appPath])
 
 if (process.argv.includes('--install')) {
-  console.log('→ installing to /Applications/Slate.app')
-  rmSync('/Applications/Slate.app', { recursive: true, force: true })
-  run('ditto', [appPath, '/Applications/Slate.app'])
+  console.log('→ installing to /Applications/SadSha Slate.app')
+  rmSync('/Applications/SadSha Slate.app', { recursive: true, force: true })
+  run('ditto', [appPath, '/Applications/SadSha Slate.app'])
 }
 
 console.log('✓ packaged', appPath)

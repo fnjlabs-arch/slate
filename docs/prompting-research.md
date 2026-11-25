@@ -344,4 +344,4 @@ at huggingface.co/MiniMaxAI/MiniMax-H3:
 Both are folded into the `minimax-h3` profile. They supersede the earlier finding
 that MiniMax documents no shot-marker syntax (that was true of the platform API
 docs; the open-weights guides define one), so `timecodeBeats` is back to true and
-Slate beat sheets compile to H3 shot markers.
+SadSha Slate beat sheets compile to H3 shot markers.

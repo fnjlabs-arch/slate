@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// Slate MCP bridge — zero-dependency stdio MCP server that forwards tool calls
-// to a running Slate app via its localhost control server.
+// SadSha Slate MCP bridge — zero-dependency stdio MCP server that forwards tool calls
+// to a running SadSha Slate app via its localhost control server.
 //
-// Connect (Claude Code):  claude mcp add slate -- node /absolute/path/to/slate-mcp.mjs
-// The Slate app must be running; every tool errors clearly otherwise.
+// Connect (Claude Code):  claude mcp add sadsha-slate -- node /absolute/path/to/sadsha-slate-mcp.mjs
+// The SadSha Slate app must be running; every tool errors clearly otherwise.
 
 import { readFileSync } from 'fs'
 import { homedir } from 'os'
@@ -15,7 +15,7 @@ function descriptorPath() {
     process.platform === 'win32'
       ? process.env.APPDATA || join(homedir(), 'AppData', 'Roaming')
       : join(homedir(), '.config')
-  return join(base, 'slate', 'control.json')
+  return join(base, 'sadsha-slate', 'control.json')
 }
 
 function readDescriptor() {
@@ -30,7 +30,7 @@ function readDescriptor() {
 
 async function invoke(tool, args) {
   const desc = readDescriptor()
-  if (!desc) throw new Error("Slate isn't running — launch the app first.")
+  if (!desc) throw new Error("SadSha Slate isn't running — launch the app first.")
   const res = await fetch(`http://127.0.0.1:${desc.port}/invoke`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${desc.token}` },
@@ -42,9 +42,9 @@ async function invoke(tool, args) {
 }
 
 const TOOLS = [
-  { name: 'list_projects', description: 'List Slate projects with scene and shot counts.', inputSchema: { type: 'object', properties: {} } },
-  { name: 'get_project', description: 'Get a full Slate project document.', inputSchema: { type: 'object', properties: { projectId: { type: 'string' } }, required: ['projectId'] } },
-  { name: 'create_project', description: 'Create a new Slate project.', inputSchema: { type: 'object', properties: { name: { type: 'string' } }, required: ['name'] } },
+  { name: 'list_projects', description: 'List SadSha Slate projects with scene and shot counts.', inputSchema: { type: 'object', properties: {} } },
+  { name: 'get_project', description: 'Get a full SadSha Slate project document.', inputSchema: { type: 'object', properties: { projectId: { type: 'string' } }, required: ['projectId'] } },
+  { name: 'create_project', description: 'Create a new SadSha Slate project.', inputSchema: { type: 'object', properties: { name: { type: 'string' } }, required: ['name'] } },
   { name: 'list_shots', description: 'List all scenes and shots in a project.', inputSchema: { type: 'object', properties: { projectId: { type: 'string' } }, required: ['projectId'] } },
   { name: 'get_shot_prompt', description: 'Get one shot prompt with its spec and beat sheet.', inputSchema: { type: 'object', properties: { projectId: { type: 'string' }, shotId: { type: 'string' } }, required: ['projectId', 'shotId'] } },
   { name: 'set_shot_prompt', description: 'Replace a shot prompt (previous version is kept in history).', inputSchema: { type: 'object', properties: { projectId: { type: 'string' }, shotId: { type: 'string' }, prompt: { type: 'string' } }, required: ['projectId', 'shotId', 'prompt'] } },
@@ -76,7 +76,7 @@ rl.on('line', async (line) => {
       reply(id, {
         protocolVersion: params?.protocolVersion || '2024-11-05',
         capabilities: { tools: {} },
-        serverInfo: { name: 'slate', version: '0.1.0' }
+        serverInfo: { name: 'sadsha-slate', version: '0.1.0' }
       })
     } else if (method === 'tools/list') {
       reply(id, { tools: TOOLS })

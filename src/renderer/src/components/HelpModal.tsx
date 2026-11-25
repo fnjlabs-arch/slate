@@ -1,4 +1,4 @@
-// Help — the full guided tour of Slate, organized like a crew handbook.
+// Help — the full guided tour of SadSha Slate, organized like a crew handbook.
 
 import React, { useState } from 'react'
 
@@ -21,9 +21,9 @@ const SECTIONS: Section[] = [
     body: (
       <>
         <p>
-          Slate doesn&apos;t generate images or video — it makes the <b>prompts</b> you paste into
+          SadSha Slate doesn&apos;t generate images or video — it makes the <b>prompts</b> you paste into
           your generators dramatically better, faster, and consistent across a whole film. The flow
-          is always: <b>craft in Slate → copy → paste into your generator</b>.
+          is always: <b>craft in SadSha Slate → copy → paste into your generator</b>.
         </p>
         <ol>
           <li>
@@ -46,7 +46,7 @@ const SECTIONS: Section[] = [
         <p className="help-tip">
           💡 The brain runs on your own Claude Code or Codex sign-in — or fully offline on a local
           model (Ollama, LM Studio, vLLM, llama.cpp…). No API keys, ever. Switch brains per project
-          in the Project Bible; pick &quot;Local model&quot; and Slate auto-detects your server and
+          in the Project Bible; pick &quot;Local model&quot; and SadSha Slate auto-detects your server and
           lists its models. For reference breakdowns, load a vision-capable local model.
         </p>
         <p className="help-tip">
@@ -192,7 +192,7 @@ const SECTIONS: Section[] = [
           </li>
           <li>
             <b>Sequence Chunks</b> — for long sequences: set total length and chunk size (say 180s
-            into 20s pieces) and Slate writes one generation prompt per chunk with explicit
+            into 20s pieces) and SadSha Slate writes one generation prompt per chunk with explicit
             <b> continuity handoffs</b> — each chunk opens exactly where the last ended. Optionally
             beat-directed inside each chunk.
           </li>
@@ -264,7 +264,7 @@ const SECTIONS: Section[] = [
         </p>
         <p>
           <b>♫ Match a reference</b> — drop any audio file (or video with music/voice) onto the
-          drop zone. Slate measures the signal locally — tempo, pitch register, dynamics,
+          drop zone. SadSha Slate measures the signal locally — tempo, pitch register, dynamics,
           brightness, energy arc — and the brain reverse-engineers a matching cue or voice sheet.
           Add a hint (&quot;vault-heist score&quot;) for sharper results. Nothing is uploaded.
         </p>
@@ -324,7 +324,7 @@ const SECTIONS: Section[] = [
         </p>
         <ul>
           <li>
-            <b>Preflight warnings</b> — before you paste, Slate checks your shot against the
+            <b>Preflight warnings</b> — before you paste, SadSha Slate checks your shot against the
             model&apos;s real limits (max duration, allowed aspect ratios, fps) and warns you.
           </li>
           <li>
@@ -361,7 +361,7 @@ const SECTIONS: Section[] = [
             <K>claude auth login</K>, approve in the browser.
           </li>
           <li>
-            <b>Codex</b> — Slate uses the codex bundled with the ChatGPT desktop app, which shares
+            <b>Codex</b> — SadSha Slate uses the codex bundled with the ChatGPT desktop app, which shares
             your ChatGPT sign-in automatically. If Codex fails, open the ChatGPT app once and make
             sure you&apos;re signed in.
           </li>
@@ -370,12 +370,12 @@ const SECTIONS: Section[] = [
             can take a minute; mechanical transforms use faster tiers.
           </li>
           <li>
-            <b>Other apps / agents</b> — Slate runs an MCP server while open, so Claude Code and
+            <b>Other apps / agents</b> — SadSha Slate runs an MCP server while open, so Claude Code and
             suite apps can read and write your projects. Connect with:{' '}
-            <K>claude mcp add slate -- node …/slate/mcp/slate-mcp.mjs</K>
+            <K>claude mcp add sadsha-slate -- node …/slate/mcp/sadsha-slate-mcp.mjs</K>
           </li>
           <li>
-            <b>Your data</b> — projects are plain JSON in <K>~/Documents/Slate/</K>. Back up, sync,
+            <b>Your data</b> — projects are plain JSON in <K>~/Documents/SadSha Slate/</K>. Back up, sync,
             or version them however you like.
           </li>
         </ul>
@@ -391,7 +391,7 @@ export default function HelpModal({ onClose }: { onClose(): void }): React.JSX.E
     <div className="modal-scrim" onClick={onClose}>
       <div className="modal help-modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-head">
-          <h2>Slate Help</h2>
+          <h2>SadSha Slate Help</h2>
           <button className="btn btn-ghost btn-sm" onClick={onClose}>
             ✕
           </button>
@@ -416,16 +416,12 @@ export default function HelpModal({ onClose }: { onClose(): void }): React.JSX.E
         <div className="help-foot">
           <span>
             Created by <b>Sam Wasserman</b> ·{' '}
-            <a href="https://wassermanproductions.com" target="_blank" rel="noreferrer">
-              wassermanproductions.com
-            </a>{' '}
-            ·{' '}
-            <a href="https://wasserman.ai" target="_blank" rel="noreferrer">
-              wasserman.ai
+            <a href="https://github.com/fnjlabs-arch/slate" target="_blank" rel="noreferrer">
+              github.com/fnjlabs-arch/slate
             </a>
           </span>
-          <a className="btn btn-sm btn-key" href="https://ko-fi.com/samwasserman" target="_blank" rel="noreferrer">
-            ♥ Support on Ko-fi
+          <a className="btn btn-sm btn-key" href="https://github.com/fnjlabs-arch/slate" target="_blank" rel="noreferrer">
+            View on GitHub
           </a>
         </div>
       </div>

@@ -11,7 +11,7 @@ let root: string
 let clip: string
 
 beforeAll(() => {
-  root = mkdtempSync(join(tmpdir(), 'slate-stills-'))
+  root = mkdtempSync(join(tmpdir(), 'sadsha-slate-stills-'))
 
   // A real 6s test clip with hard cuts every 2s (three colored scenes).
   clip = join(root, 'take.mp4')

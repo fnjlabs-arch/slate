@@ -102,7 +102,7 @@ function Casting(): React.JSX.Element {
   }
 
   const copySheetPrompt = (c: CharacterSheet): void => {
-    void window.slate.copyText(characterSheetPrompt(c, c.scenario))
+    void window.sadshaSlate.copyText(characterSheetPrompt(c, c.scenario))
   }
 
   if (editing) {
@@ -349,7 +349,7 @@ function ArtDept(): React.JSX.Element {
             <button className="btn btn-sm" onClick={() => setEditing(a)}>
               Edit
             </button>
-            <button className="btn btn-sm" onClick={() => void window.slate.copyText(sheetPrompt(a))}>
+            <button className="btn btn-sm" onClick={() => void window.sadshaSlate.copyText(sheetPrompt(a))}>
               Sheet Prompt
             </button>
             <button className="btn btn-sm btn-ghost btn-danger" onClick={() => store.removeArtDept(a.id)}>
@@ -486,7 +486,7 @@ function Locations(): React.JSX.Element {
             <button className="btn btn-sm" onClick={() => setEditing(l)}>
               Edit
             </button>
-            <button className="btn btn-sm" onClick={() => void window.slate.copyText(sheetPrompt(l))}>
+            <button className="btn btn-sm" onClick={() => void window.sadshaSlate.copyText(sheetPrompt(l))}>
               Sheet Prompt
             </button>
             <button className="btn btn-sm btn-ghost btn-danger" onClick={() => store.removeLocation(l.id)}>

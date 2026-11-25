@@ -16,7 +16,7 @@ import type {
 
 declare global {
   interface Window {
-    slate: import('../../../shared/types').SlateApi
+    sadshaSlate: import('../../../shared/types').SadShaSlateApi
   }
 }
 
@@ -114,21 +114,21 @@ export const useProject = create<ProjectState>((set, get) => ({
   dirty: false,
 
   async refreshMetas() {
-    set({ metas: await window.slate.listProjects() })
+    set({ metas: await window.sadshaSlate.listProjects() })
   },
 
   async refreshBrain() {
-    set({ brain: await window.slate.brainStatus() })
+    set({ brain: await window.sadshaSlate.brainStatus() })
   },
 
   async create(name) {
-    const p = await window.slate.createProject(name)
+    const p = await window.sadshaSlate.createProject(name)
     set({ project: p, sceneId: null, shotId: null })
     await get().refreshMetas()
   },
 
   async open(id) {
-    const p = await window.slate.openProject(id)
+    const p = await window.sadshaSlate.openProject(id)
     if (p) {
       const firstScene = p.scenes[0] ?? null
       set({
@@ -145,7 +145,7 @@ export const useProject = create<ProjectState>((set, get) => ({
   },
 
   async remove(id) {
-    await window.slate.deleteProject(id)
+    await window.sadshaSlate.deleteProject(id)
     if (get().project?.id === id) set({ project: null, sceneId: null, shotId: null })
     await get().refreshMetas()
   },
@@ -158,7 +158,7 @@ export const useProject = create<ProjectState>((set, get) => ({
     set({ project: next, dirty: true })
     if (saveTimer) clearTimeout(saveTimer)
     saveTimer = setTimeout(() => {
-      void window.slate.saveProject(next).then(() => set({ dirty: false }))
+      void window.sadshaSlate.saveProject(next).then(() => set({ dirty: false }))
     }, 500)
   },
 

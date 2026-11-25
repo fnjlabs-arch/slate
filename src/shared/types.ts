@@ -1,4 +1,4 @@
-// Shared data model for Slate — used by main, preload, and renderer.
+// Shared data model for SadSha Slate — used by main, preload, and renderer.
 
 export type SectionId = 'subject' | 'composition' | 'lighting' | 'camera' | 'style' | 'mood'
 
@@ -321,7 +321,7 @@ export interface LocalModelInfo {
 
 // ---- IPC surface ----
 
-export interface SlateApi {
+export interface SadShaSlateApi {
   listProjects(): Promise<ProjectMeta[]>
   createProject(name: string): Promise<Project>
   openProject(id: string): Promise<Project | null>

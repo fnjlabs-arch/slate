@@ -1,5 +1,5 @@
 // Control server — localhost-only HTTP endpoint with a bearer token, so the
-// bundled MCP bridge (mcp/slate-mcp.mjs) and suite apps can read/write projects.
+// bundled MCP bridge (mcp/sadsha-slate-mcp.mjs) and suite apps can read/write projects.
 // Pattern shared across the suite: random port + token descriptor on disk.
 
 import { createServer, IncomingMessage, ServerResponse } from 'http'
@@ -20,7 +20,7 @@ function descriptorPath(): string {
     process.platform === 'win32'
       ? process.env.APPDATA || join(homedir(), 'AppData', 'Roaming')
       : join(homedir(), '.config')
-  return join(base, 'slate', 'control.json')
+  return join(base, 'sadsha-slate', 'control.json')
 }
 
 async function readBody(req: IncomingMessage): Promise<string> {
@@ -138,9 +138,9 @@ const tools: Record<string, (args: Record<string, unknown>, notify: Notify) => P
 
 export function toolCatalog(): Array<{ name: string; description: string }> {
   return [
-    { name: 'list_projects', description: 'List Slate projects with scene/shot counts' },
-    { name: 'get_project', description: 'Get a full Slate project (args: projectId)' },
-    { name: 'create_project', description: 'Create a new Slate project (args: name)' },
+    { name: 'list_projects', description: 'List SadSha Slate projects with scene/shot counts' },
+    { name: 'get_project', description: 'Get a full SadSha Slate project (args: projectId)' },
+    { name: 'create_project', description: 'Create a new SadSha Slate project (args: name)' },
     { name: 'list_shots', description: 'List scenes and shots (args: projectId)' },
     { name: 'get_shot_prompt', description: 'Get a shot prompt + spec (args: projectId, shotId)' },
     { name: 'set_shot_prompt', description: 'Set a shot prompt, versioning the old one (args: projectId, shotId, prompt)' },
@@ -193,7 +193,7 @@ export async function startControlServer(notify: Notify): Promise<void> {
   await fs.mkdir(join(desc, '..'), { recursive: true })
   await fs.writeFile(
     desc,
-    JSON.stringify({ v: 1, app: 'slate', port, token, pid: process.pid }, null, 2),
+    JSON.stringify({ v: 1, app: 'sadsha-slate', port, token, pid: process.pid }, null, 2),
     { mode: 0o600 }
   )
 }

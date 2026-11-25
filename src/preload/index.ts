@@ -1,7 +1,7 @@
 import { contextBridge, ipcRenderer, webUtils } from 'electron'
-import type { BrainBackend, BrainRequest, Project, SlateApi } from '../shared/types'
+import type { BrainBackend, BrainRequest, Project, SadShaSlateApi } from '../shared/types'
 
-const api: SlateApi & { brainRunWith: (req: BrainRequest, backend: BrainBackend) => Promise<unknown> } = {
+const api: SadShaSlateApi & { brainRunWith: (req: BrainRequest, backend: BrainBackend) => Promise<unknown> } = {
   listProjects: () => ipcRenderer.invoke('projects:list'),
   createProject: (name: string) => ipcRenderer.invoke('projects:create', name),
   openProject: (id: string) => ipcRenderer.invoke('projects:open', id),
@@ -41,4 +41,4 @@ const api: SlateApi & { brainRunWith: (req: BrainRequest, backend: BrainBackend)
   }
 }
 
-contextBridge.exposeInMainWorld('slate', api)
+contextBridge.exposeInMainWorld('sadshaSlate', api)

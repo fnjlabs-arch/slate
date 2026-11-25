@@ -1,4 +1,4 @@
-// Browser-preview config — UI development without Electron (window.slate is mocked).
+// Browser-preview config — UI development without Electron (window.sadshaSlate is mocked).
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'

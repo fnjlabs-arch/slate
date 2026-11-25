@@ -47,7 +47,7 @@ export default function DeliverPanel(): React.JSX.Element {
   }
 
   const copy = (text: string, tag: string): void => {
-    void window.slate.copyText(text)
+    void window.sadshaSlate.copyText(text)
     setCopied(tag)
     setTimeout(() => setCopied(null), 1400)
   }
@@ -236,7 +236,7 @@ function SceneExport(): React.JSX.Element {
   const [copied, setCopied] = useState<string | null>(null)
   if (!scene || !scene.shots.length) return <></>
   const copy = (text: string, tag: string): void => {
-    void window.slate.copyText(text)
+    void window.sadshaSlate.copyText(text)
     setCopied(tag)
     setTimeout(() => setCopied(null), 1400)
   }

@@ -22,7 +22,7 @@ export default function App(): React.JSX.Element {
     if (!project || testState === 'busy') return
     setTestState('busy')
     setTestMsg(null)
-    const res = await window.slate.brainTest(project.defaults.brain, {
+    const res = await window.sadshaSlate.brainTest(project.defaults.brain, {
       endpoint: project.defaults.localEndpoint,
       model: project.defaults.localModel
     })
@@ -42,11 +42,11 @@ export default function App(): React.JSX.Element {
   useEffect(() => {
     void refreshMetas()
     void refreshBrain()
-    const off = window.slate.onProjectsChanged(() => {
+    const off = window.sadshaSlate.onProjectsChanged(() => {
       void refreshMetas()
     })
-    const offHelp = window.slate.onHelpOpen(() => setHelpOpen(true))
-    const offAbout = window.slate.onAboutOpen(() => setAboutOpen(true))
+    const offHelp = window.sadshaSlate.onHelpOpen(() => setHelpOpen(true))
+    const offAbout = window.sadshaSlate.onAboutOpen(() => setAboutOpen(true))
     return () => {
       off()
       offHelp()
@@ -64,7 +64,7 @@ export default function App(): React.JSX.Element {
         </div>
         <div className="titlebar-side">
           {dirty && <span className="save-dot" title="Saving…" />}
-          <button className="btn btn-ghost btn-sm" title="Slate Help (⌘/)" onClick={() => setHelpOpen(true)}>
+          <button className="btn btn-ghost btn-sm" title="SadSha Slate Help (⌘/)" onClick={() => setHelpOpen(true)}>
             ?
           </button>
           {project && (
@@ -86,7 +86,7 @@ export default function App(): React.JSX.Element {
               <button
                 className={`btn btn-sm ad-toggle ${adOpen ? 'on' : ''}`}
                 onClick={() => setAdOpen((v) => !v)}
-                title="First AD — optional: talk through what you want and it operates Slate for you"
+                title="First AD — optional: talk through what you want and it operates SadSha Slate for you"
               >
                 ✦ First AD
               </button>

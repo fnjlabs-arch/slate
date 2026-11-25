@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url'
 import { tmpdir } from 'os'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const dataDir = join(tmpdir(), 'slate-snap-data')
+const dataDir = join(tmpdir(), 'sadsha-slate-snap-data')
 const outDir = process.env.QA_OUT || resolve(root, 'docs/images')
 rmSync(dataDir, { recursive: true, force: true })
 mkdirSync(join(dataDir, 'night-market'), { recursive: true })
@@ -175,6 +175,6 @@ console.log('→ running snap (hidden window)…')
 execFileSync('npx', ['electron', 'out/main/index.js'], {
   cwd: root,
   stdio: 'inherit',
-  env: { ...process.env, SLATE_DATA_DIR: dataDir, SLATE_SNAP_SCRIPT: stepsPath, SLATE_SNAP_OUT: outDir }
+  env: { ...process.env, SADSHA_SLATE_DATA_DIR: dataDir, SADSHA_SLATE_SNAP_SCRIPT: stepsPath, SADSHA_SLATE_SNAP_OUT: outDir }
 })
 console.log('✓ screenshots in docs/images/')

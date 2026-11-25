@@ -34,7 +34,7 @@ function AudioRefZone({
     setBusy(true)
     setError(null)
     try {
-      const fp = await window.slate.analyzeAudio(path)
+      const fp = await window.sadshaSlate.analyzeAudio(path)
       await onAnalyzed(fp, hint.trim())
       setHint('')
     } catch (e) {
@@ -44,7 +44,7 @@ function AudioRefZone({
   }
 
   const pick = async (): Promise<void> => {
-    const paths = await window.slate.pickAudio()
+    const paths = await window.sadshaSlate.pickAudio()
     if (paths[0]) await analyze(paths[0])
   }
 
@@ -61,7 +61,7 @@ function AudioRefZone({
         setDrag(false)
         const file = e.dataTransfer.files[0]
         if (!file) return
-        const path = window.slate.pathForFile(file)
+        const path = window.sadshaSlate.pathForFile(file)
         if (path) void analyze(path)
       }}
     >
@@ -116,7 +116,7 @@ export default function SoundDept(): React.JSX.Element {
 function CompiledView({ c, onClose }: { c: Compiled & { label: string }; onClose(): void }): React.JSX.Element {
   const [copied, setCopied] = useState<string | null>(null)
   const copy = (text: string, tag: string): void => {
-    void window.slate.copyText(text)
+    void window.sadshaSlate.copyText(text)
     setCopied(tag)
     setTimeout(() => setCopied(null), 1400)
   }
